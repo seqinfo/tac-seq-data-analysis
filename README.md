@@ -6,4 +6,4 @@ This repository contains the sequencing data analysis software for TAC-seq.
 * FASTX-Toolkit (https://github.com/agordon/fastx_toolkit)
 
 ## Quick start guide
-* Run analysis: run.sh
+* Run analysis: `run.sh`
