@@ -1,8 +1,3 @@
-#!/bin/bash
-
-#SBATCH --job-name=count
-#SBATCH --time=00:30:00
-
 # arguments with default values
 INPUT=  # sample.sh OUTPUT
 UMI=2  # UMI threshold
