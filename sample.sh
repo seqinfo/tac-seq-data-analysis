@@ -1,14 +1,3 @@
-#!/bin/bash
-
-#SBATCH --job-name=sample
-#SBATCH --partition=main
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=32000
-#SBATCH --time=100:00:00
-
-source activate pesa  # load conda environment (required software)
-
 # arguments with default values
 FASTQS=  # TODO: detect all FASTQs from bcl2fastq.sh output folder and subfolders
 TARGETS=  # target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)
