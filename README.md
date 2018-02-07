@@ -2,7 +2,8 @@
 
 This repository contains the sequencing data analysis software for TAC-seq.
 
-Analysis steps:
-1. bcl2fastq.sh
-2. sample.sh
-3. count.sh
+## Requirements
+* FASTX-Toolkit (https://github.com/agordon/fastx_toolkit)
+
+## Quick start guide
+* Run analysis: run.sh
