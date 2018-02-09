@@ -7,8 +7,9 @@ This repository contains the sequencing data analysis software for TAC-seq.
 * [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit).
 * [Git](https://git-scm.com/).
 ## Quick start guide
-* Prepare Ubuntu for software installation`sudo apt-get update`
-* Install FASTX-Toolkit`sudo apt-get install fastx-toolkit`
+Use the following commands to setup and run sequencing data analysis software for TAC-seq on Ubuntu 16.04:
+* Prepare Ubuntu for software installation: `sudo apt-get update`
+* Install FASTX-Toolkit: `sudo apt-get install fastx-toolkit`
 * Install git: `sudo apt-get install git`
 * Download the analysis software: `git clone https://github.com/cchtEE/TAC-seq-data-analysis.git`
 * Navigate to analysis location: `cd TAC-seq-data-analysis`
