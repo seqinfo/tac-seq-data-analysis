@@ -13,6 +13,7 @@ Use the following commands to setup and run sequencing data analysis software fo
 * Install git: `sudo apt-get install git`
 * Download the analysis software: `git clone https://github.com/cchtEE/TAC-seq-data-analysis.git`
 * Navigate to analysis location: `cd TAC-seq-data-analysis`
+* Make analysis runnable: `chmod +x run.sh`
 * Run analysis: `./run.sh`
 
 ## Target file format
