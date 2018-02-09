@@ -7,7 +7,7 @@ This repository contains the sequencing data analysis software for TAC-seq.
 * [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit). On Ubuntu 16.04 you can use commands `sudo apt-get update` and `sudo apt-get install fastx-toolkit`to install it.
 
 ## Quick start guide
-* Run analysis: `run.sh`
+* Run analysis: `./run.sh`
 
 ## Target file format
 Target file is a text file which contains a list of targets. Each line has to contain a target ID (must be alphanumeric) which is followed by the target sequence (only A, C, G and T characters). Target ID and sequence are separated by a TAB character.
