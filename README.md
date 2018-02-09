@@ -3,7 +3,7 @@
 This repository contains the sequencing data analysis software for TAC-seq.
 
 ## Requirements
-* Linux-based OS (preferably Ubuntu 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+* Linux-based OS (preferably [Ubuntu](https://www.ubuntu.com/desktop) 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 * [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit). On Ubuntu 16.04 you can use commands `sudo apt-get update` and `sudo apt-get install fastx-toolkit`to install it.
 
 ## Quick start guide
