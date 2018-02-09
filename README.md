@@ -3,7 +3,7 @@
 This repository contains the sequencing data analysis software for TAC-seq.
 
 ## Requirements
-* Linux-based OS (preferably [Ubuntu](https://www.ubuntu.com/desktop) 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+* Linux-based OS (preferably [Ubuntu](https://www.ubuntu.com/desktop) 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Alternatively you can use [Oracle VM VirtualBox](https://www.virtualbox.org/) to run Ubuntu 16.04 following this [guide](https://askubuntu.com/questions/142549/how-to-install-ubuntu-on-virtualbox).
 ## Quick start guide
 Use the following commands to setup and run sequencing data analysis software for TAC-seq on Ubuntu 16.04:
 * Prepare Ubuntu for software installation: `sudo apt update`
