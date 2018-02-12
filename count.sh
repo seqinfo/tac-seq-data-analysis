@@ -1,10 +1,11 @@
-# arguments with default values
-INPUT=  # sample.sh OUTPUT
-UMI=2  # UMI threshold
+#!/bin/bash
 
-# create output
-output=counts_UMI$UMI.tsv
-echo -e 'sample\tlocus\tread_count\tmolecule_count' > $output
+# read arguments
+INPUT=$1  # path to sample.sh output folder
+UMI=$2  # UMI threshold
+
+# write column headers to stdout
+echo -e "sample\tlocus\tread_count\tmolecule_count"
 
 # count by sample and locus
 for fasta in $INPUT/*/merged/*.merged.fasta
@@ -25,6 +26,6 @@ do
 		fi
 	done
 	
-	# write to output
-	echo -e "$sample\t$locus\t$read_count\t$molecule_count" >> $output
+	# write to stdout
+	echo -e "$sample\t$locus\t$read_count\t$molecule_count"
 done
