@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # read arguments
-INPUT1=$1  # compressed/uncompressed FASTQ files
+INPUT=$1  # compressed/uncompressed FASTQ files
 TARGET=$2  # target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)
 OUTPUT=$3
 MISMATCHES=$4  # number of allowed mismatches per target sequence
