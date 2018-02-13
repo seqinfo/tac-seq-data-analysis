@@ -16,14 +16,14 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 
 ## Run analysis
 Execute `run.sh` with following arguments:
-1. Input FASTQ files (supports also gzip compressed FASTQ files)
+1. Input FASTQ files (also supports gzip compressed FASTQ files)
 2. Target file
 3. Output folder
 4. Number of allowed mismatches per target sequence
 5. UMI threshold
 
 ## Target file format
-Target file is a text file which contains a list of targets. Each line has to contain a target ID (must be alphanumeric) which is followed by the target sequence (only A, C, G and T characters). Target ID and sequence are separated by a TAB character.
+Target file is a text file which contains a list of targets. Each line has to contain a target ID (must be alphanumeric) which is followed by the target sequence (only A, C, G and T characters are allowed). Target ID and sequence are separated by a TAB character.
 
 Target file example:
 
