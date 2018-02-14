@@ -41,4 +41,4 @@ Target file example:
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
     
 ## Example
-`source run.sh "example/*.fastq" example/targets.txt output/ 5 2`
+`./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
