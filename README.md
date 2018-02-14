@@ -1,7 +1,7 @@
 # TAC-seq data analysis
 This repository contains the sequencing data analysis software for TAC-seq.
 
-## There are 2 options to use TAC-seq data analysis software:
+### There are 2 options to use TAC-seq data analysis software:
 
 ### Option 1: Virtual machine
 We have created TAC-seq-data-analysis virtual machine that can be executed on all common operating systems through virtualization programs such as VirtualBox, providing the user with preinstalled TAC-seq data analysis software.
