@@ -46,7 +46,8 @@ Target file example:
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
 
-#### Output folder
+#### Output
+Output folder should include results and intermediate files:
 * `counts_UMI#.tsv` file with read and molecule counts per sample and locus. # symbolizes UMI threshold.
 * Sample folders with intermediate files.
 
