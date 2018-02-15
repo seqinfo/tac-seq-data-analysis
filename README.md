@@ -30,7 +30,11 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 6. Make `run.sh` executable: `chmod +x run.sh`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Run analysis
+=======
+#### Run analysis
+>>>>>>> parent of 5e50635... Update README.md
 =======
 #### Run analysis
 >>>>>>> parent of 5e50635... Update README.md
@@ -60,5 +64,8 @@ Output folder includes intermediate files and results:
 =======
     
 #### Example
+<<<<<<< HEAD
+>>>>>>> parent of 5e50635... Update README.md
+=======
 >>>>>>> parent of 5e50635... Update README.md
 `./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
