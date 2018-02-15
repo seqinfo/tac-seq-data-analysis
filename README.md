@@ -46,10 +46,10 @@ Target file example:
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
 
-#### Output
+### Run analysis
+`./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
+
+### Output
 Output folder includes intermediate files and results:
 * Sample folders with intermediate files
 * `counts_UMI#.tsv` file with read and molecule counts per sample and locus. # symbolizes UMI threshold.
-
-### Run example
-`./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
