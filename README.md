@@ -10,7 +10,7 @@ We have created TAC-seq-data-analysis virtual machine that can be executed on al
 2. Download [TAC-seq-data-analysis virtual machine](https://www.dropbox.com/s/867beq9m2q9v6eq/TAC-seq-data-analysis.ova?dl=0).
 3. Open VirtualBox and go to "File -> Import Appliance -> choose TAC-seq-data-analysis.ova (leave the default options).
 4. To start the virtual machine, right click on the "TAC-seq-data-analysis" -> Start.
-5. Once started, on the desktop of the virtual machine, follow "protocol.txt" to run analysis.
+5. Once started, on the desktop of the virtual machine, follow `protocol.txt` to run analysis.
 
 Please note, by default the maximum space, the TAC-seq-data-analysis virtual machine can use, is limited to 10 GB. For larger sequencing data analysis than provided example files, it is recommended to use [shared folder](https://www.howtogeek.com/189974/how-to-share-your-computers-files-with-a-virtual-machine/) that allows to share your files from your host operating system with virtual machine. 
 
@@ -45,6 +45,11 @@ Target file example:
     TARGET1 TAGGATAGGTGGATTCGGGAACTCCCCGATAGTTTTGTCACATCGACATACTAA
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
-    
-### Run analysis
+
+#### Output
+Output folder includes intermediate files and results:
+* Sample folders with intermediate files
+* `counts_UMI#.tsv` file with read and molecule counts per sample and locus. # symbolizes UMI threshold.
+
+### Run example
 `./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
