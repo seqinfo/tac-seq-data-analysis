@@ -29,7 +29,7 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 5. Navigate to analysis location: `cd TAC-seq-data-analysis`
 6. Make `run.sh` executable: `chmod +x run.sh`
 
-### Required input files and formats
+### Run analysis
 Execute `run.sh` with following arguments:
 1. Input FASTQ files (also supports gzip compressed FASTQ files)
 2. Target file
@@ -45,6 +45,10 @@ Target file example:
     TARGET1 TAGGATAGGTGGATTCGGGAACTCCCCGATAGTTTTGTCACATCGACATACTAA
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
-    
-### Run analysis
+
+#### Output folder
+* `counts_UMI#.tsv` file with read and molecule counts per sample and locus
+* sample folders with intermediate files
+
+### Example
 `./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
