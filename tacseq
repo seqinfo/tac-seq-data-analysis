@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # set default values to arguments
-mismatches=5  # Default mismatches
-umi=2  # Default UMI threshold
+mismatches=5  # default mismatches
+umi=2  # default UMI threshold
 
 # tacseq command usage function
 tacseq_usage() {
@@ -22,13 +22,13 @@ prep_usage() {
   echo "usage: $0 $subcommand [options]"
   echo ""
   echo "mandatory:"
-  echo "	-i	input, compressed/uncompressed FASTQ files"
-  echo "	-t	target, target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
-  echo "	-o	output"
+  echo "	-i	input files: compressed/uncompressed FASTQ files"
+  echo "	-t	target file: target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
+  echo "	-o	output directory"
   echo ""
   echo "optional:"
   echo "	-h	display this help and exit"
-  echo "	-m	mismatches, number of allowed mismatches per target sequence (default: 5)"
+  echo "	-m	mismatches: number of allowed mismatches per target sequence (default: 5)"
   echo ""
 }
 
@@ -37,7 +37,7 @@ count_usage() {
   echo "usage: $0 $subcommand [options]"
   echo ""
   echo "mandatory:"
-  echo "	-i	input, tacseq prep output directory"
+  echo "	-i	input directory: 'tacseq prep' output directory"
   echo ""
   echo "optional:"
   echo "	-h	display this help and exit"
@@ -46,7 +46,7 @@ count_usage() {
 }
 
 # parse options to sub-commands
-subcommand="$1"
+subcommand=$1
 OPTIND=2
 case $subcommand in
   # parse options to 'prep' sub-command
@@ -71,16 +71,16 @@ case $subcommand in
 		  ;;
       esac
     done
-	shift "$((OPTIND-1))"
+	shift $((OPTIND-1))
 	
 	# check for mandatory options
-	if [ ! "$input" ] || [ ! "$target" ] || [ ! "$output" ]; then
+	if [ ! $input ] || [ ! $target ] || [ ! $output ]; then
 	  prep_usage 1>&2
 	  exit 1
 	fi
 	
 	# run 'prep' sub-command
-	source prep.sh "$input" "$target" "$output" $mismatches
+	source prep.sh $input $target $output $mismatches
     ;;
   # parse options to 'count' sub-command
   count )
@@ -98,16 +98,16 @@ case $subcommand in
 		  ;;
       esac
     done
-	shift "$((OPTIND-1))"
+	shift $((OPTIND-1))
 	
 	# check for mandatory options
-	if [ ! "$input" ]; then
+	if [ ! $input ]; then
 	  count_usage 1>&2
 	  exit 1
 	fi
 	
 	# run 'count' sub-command
-	source count.sh "$input" $umi
+	source count.sh $input $umi
     ;;
   * )
     tacseq_usage 1>&2
