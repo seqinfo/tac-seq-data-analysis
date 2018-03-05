@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # read arguments
-INPUT=$1  # path to sample.sh output folder
+INPUT=$1  # prep.sh output
 UMI=$2  # UMI threshold
 
 # write column headers to stdout
