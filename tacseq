@@ -7,6 +7,7 @@ umi=2  # default UMI threshold
 # tacseq command usage function
 tacseq_usage() {
   echo "usage: $0 [options] <command>"
+  echo "TAC-seq data analysis"
   echo ""
   echo "options:"
   echo "	-h	display this help and exit"
@@ -20,6 +21,7 @@ tacseq_usage() {
 # prep sub-command usage function
 prep_usage() {
   echo "usage: $0 $subcommand [options]"
+  echo "Prepare samples (FASTQ files) for counting."
   echo ""
   echo "mandatory:"
   echo "	-i	input files: compressed/uncompressed FASTQ files"
@@ -35,6 +37,7 @@ prep_usage() {
 # count sub-command usage function
 count_usage() {
   echo "usage: $0 $subcommand [options]"
+  echo "Count reads and molecules per sample and target."
   echo ""
   echo "mandatory:"
   echo "	-i	input directory: 'tacseq prep' output directory"
@@ -80,7 +83,7 @@ case $subcommand in
 	fi
 	
 	# run 'prep' sub-command
-	source prep.sh "$input" $target $output $mismatches
+	source prep.sh $input $target $output $mismatches
     ;;
   # parse options to 'count' sub-command
   count )
