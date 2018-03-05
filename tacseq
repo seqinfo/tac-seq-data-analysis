@@ -83,7 +83,7 @@ case $subcommand in
 	fi
 	
 	# run 'prep' sub-command
-	source prep.sh $input $target $output $mismatches
+	source prep.sh "$input" "$target" "$output" $mismatches
     ;;
   # parse options to 'count' sub-command
   count )
