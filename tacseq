@@ -74,13 +74,13 @@ case $subcommand in
 	shift $((OPTIND-1))
 	
 	# check for mandatory options
-	if [ ! $input ] || [ ! $target ] || [ ! $output ]; then
+	if [ ! "$input" ] || [ ! "$target" ] || [ ! "$output" ]; then
 	  prep_usage 1>&2
 	  exit 1
 	fi
 	
 	# run 'prep' sub-command
-	source prep.sh $input $target $output $mismatches
+	source prep.sh "$input" $target $output $mismatches
     ;;
   # parse options to 'count' sub-command
   count )
@@ -101,13 +101,13 @@ case $subcommand in
 	shift $((OPTIND-1))
 	
 	# check for mandatory options
-	if [ ! $input ]; then
+	if [ ! "$input" ]; then
 	  count_usage 1>&2
 	  exit 1
 	fi
 	
 	# run 'count' sub-command
-	source count.sh $input $umi
+	source count.sh "$input" $umi
     ;;
   * )
     tacseq_usage 1>&2
