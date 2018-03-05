@@ -34,12 +34,14 @@ TAC-seq data analysis
 
 Options:
 * `-h` display help and exit
+
 Commands:
 * `prep` prepare samples (FASTQ files) for counting
 * `count` count reads and molecules per sample and target
 
 #### `tacseq prep [options]`
 Prepare samples (FASTQ files) for counting.
+
 Options:
 * `-h` display help and exit
 * `-i` input files: gzip compressed/uncompressed FASTQ files
@@ -49,6 +51,7 @@ Options:
 
 #### `tacseq count [options]`
 Count reads and molecules per sample and target.
+
 Options:
 * `-h` display help and exit
 * `-i` input directory: `tacseq prep` output directory
