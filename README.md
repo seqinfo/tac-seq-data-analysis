@@ -30,7 +30,7 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 
 ### Usage
 #### `tacseq [options] <command>`
-TAC-seq data analysis.
+TAC-seq data analysis
 
 Options:
 * `-h` display help and exit
