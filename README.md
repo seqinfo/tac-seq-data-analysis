@@ -23,14 +23,29 @@ Please note, by default the maximum space, the TAC-seq-data-analysis virtual mac
 #### Setup
 Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.04 terminal:
 1. Prepare Ubuntu for software installation: `sudo apt update`
-2. Install [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit): `sudo apt install fastx-toolkit`
+2. Install [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/index.html): `sudo apt install fastx-toolkit`
 3. Install [git](https://git-scm.com/): `sudo apt install git`
 4. Download the analysis software: `git clone https://github.com/cchtEE/TAC-seq-data-analysis.git`
 5. Navigate to analysis location: `cd TAC-seq-data-analysis`
-6. Make `run.sh` executable: `chmod +x run.sh`
+6. Make `tacseq` executable: `chmod +x tacseq`
 
 ### Required input files and formats
-Execute `run.sh` with following arguments:
+`tacseq` options:
+	* -h	help
+	
+`tacseq` commands:
+1. `tacseq prep` options:
+	* -h	help
+	* -i	input
+	* -t	target
+	* -o	output
+	* -m	mismatches
+2. `tacseq count` options:
+	* -h	help
+	* -i	input
+	* -u	UMI threshold
+
+Execute `tacseq` with following arguments:
 1. Input FASTQ files (also supports gzip compressed FASTQ files)
 2. Target file
 3. Output folder
@@ -46,8 +61,9 @@ Target file example:
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
 
-### Run analysis
-`./run.sh "example/*.fastq" example/targets.txt output/ 5 2`
+### Run example analysis
+`./tacseq prep -i "example/*.fastq" -t example/targets.txt -o output/ -m 5  # prepare samples`
+`./tacseq count -i output/ -u 2 > counts.tsv  # count molecules and write results to counts.tsv`
 
 ### Output
 Output folder includes intermediate files and results:
