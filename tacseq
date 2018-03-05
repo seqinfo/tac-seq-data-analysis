@@ -24,7 +24,7 @@ prep_usage() {
   echo "Prepare samples (FASTQ files) for counting."
   echo ""
   echo "mandatory:"
-  echo "	-i	input files: compressed/uncompressed FASTQ files"
+  echo "	-i	input files: gzip compressed/uncompressed FASTQ files"
   echo "	-t	target file: target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
   echo "	-o	output directory"
   echo ""
