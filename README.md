@@ -29,7 +29,7 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 6. Make `tacseq` executable: `chmod +x tacseq`
 
 ### Usage
-#### `tacseq [options] <command>`
+`tacseq [options] <command>`
 Options:
 * `-h` display help and exit
 
@@ -37,7 +37,7 @@ Commands:
 * `prep` prepare samples (FASTQ files) for counting
 * `count` count reads and molecules per sample and target
 
-#### `tacseq prep [options]`
+`tacseq prep [options]`
 Options:
 * `-h` display help and exit
 * `-i` input files: gzip compressed/uncompressed FASTQ files
@@ -45,7 +45,7 @@ Options:
 * `-o` output
 * `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
 
-#### `tacseq count [options]`
+`tacseq count [options]`
 Options:
 * `-h` display help and exit
 * `-i` input directory: `tacseq prep` output directory
@@ -61,8 +61,7 @@ Target file example:
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
 
 ### Output
-#### `tacseq prep`
-Outputs a directory for each sample with:
+`tacseq prep` outputs a directory for each sample with:
 * 3 sub-directories with files for each target:
 	* loci
 	* umis
@@ -71,8 +70,7 @@ Outputs a directory for each sample with:
 	* trimmed.fasta
 	* umi_joined.fasta
 
-#### `tacseq count`
-Outputs read and molecule count per sample and target.
+`tacseq count` outputs read and molecule count per sample and target.
 
 ### Run example
 * Step 1 - prepare samples:
