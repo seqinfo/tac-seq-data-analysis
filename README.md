@@ -42,19 +42,23 @@ Commands:
 #### `tacseq prep [options]`
 Prepare samples (FASTQ files) for counting.
 
-Options:
-* `-h` display help and exit
+Mandatory:
 * `-i` input files: gzip compressed/uncompressed FASTQ files
 * `-t` target file: target file format is based on [FASTX Barcode Splitter](http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage) barcode file format
 * `-o` output
+
+Optional:
+* `-h` display help and exit
 * `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
 
 #### `tacseq count [options]`
 Count reads and molecules per sample and target.
 
+Mandatory:
+* `-i` input directory: `tacseq prep` output directory
+
 Options:
 * `-h` display help and exit
-* `-i` input directory: `tacseq prep` output directory
 * `-u` UMI threshold (default: 2)
 
 #### Target file format
