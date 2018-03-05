@@ -57,7 +57,7 @@ Count reads and molecules per sample and target.
 Mandatory:
 * `-i` input directory: `tacseq prep` output directory
 
-Options:
+Optional:
 * `-h` display help and exit
 * `-u` UMI threshold (default: 2)
 
