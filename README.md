@@ -30,29 +30,25 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 
 ### Usage
 `tacseq [options] <command>`
-
-Options:
-* `-h` display help and exit
-
-Commands:
-* `prep` prepare samples (FASTQ files) for counting
-* `count` count reads and molecules per sample and target
+* Options:
+	* `-h` display help and exit
+* Commands:
+	* `prep` prepare samples (FASTQ files) for counting
+	* `count` count reads and molecules per sample and target
 
 `tacseq prep [options]`
-
-Options:
-* `-h` display help and exit
-* `-i` input files: gzip compressed/uncompressed FASTQ files
-* `-t` target file: target file format is based on [FASTX Barcode Splitter](http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage) barcode file format
-* `-o` output
-* `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
+* Options:
+	* `-h` display help and exit
+	* `-i` input files: gzip compressed/uncompressed FASTQ files
+	* `-t` target file: target file format is based on [FASTX Barcode Splitter](http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage) barcode file format
+	* `-o` output
+	* `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
 
 `tacseq count [options]`
-
-Options:
-* `-h` display help and exit
-* `-i` input directory: `tacseq prep` output directory
-* `-u` UMI threshold (default: 2)
+* Options:
+	* `-h` display help and exit
+	* `-i` input directory: `tacseq prep` output directory
+	* `-u` UMI threshold (default: 2)
 
 #### Target file format
 Target file is a text file which contains a list of targets. Each line has to contain a target ID (must be alphanumeric) which is followed by the target sequence (only A, C, G and T characters are allowed). Target ID and sequence are separated by a TAB character.
