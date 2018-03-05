@@ -15,7 +15,6 @@ We have created TAC-seq-data-analysis virtual machine that can be executed on al
 Please note, by default the maximum space, the TAC-seq-data-analysis virtual machine can use, is limited to 10 GB. For larger sequencing data analysis than provided example files, it is recommended to use [shared folder](https://www.howtogeek.com/189974/how-to-share-your-computers-files-with-a-virtual-machine/) that allows to share your files from your host operating system with virtual machine. 
 
 ### Option 2: Standalone version
-
 #### Requirements
 * Linux-based OS (preferably [Ubuntu](https://www.ubuntu.com/desktop) 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
 * [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit)
@@ -29,28 +28,34 @@ Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.
 5. Navigate to analysis location: `cd TAC-seq-data-analysis`
 6. Make `tacseq` executable: `chmod +x tacseq`
 
-### Required input files and formats
-`tacseq` options:
-	* -h	help
-	
-`tacseq` commands:
-1. `tacseq prep` options:
-	* -h	help
-	* -i	input
-	* -t	target
-	* -o	output
-	* -m	mismatches
-2. `tacseq count` options:
-	* -h	help
-	* -i	input
-	* -u	UMI threshold
+### Usage
+#### `tacseq [options] <command>`
+TAC-seq data analysis.
 
-Execute `tacseq` with following arguments:
-1. Input FASTQ files (also supports gzip compressed FASTQ files)
-2. Target file
-3. Output folder
-4. Number of allowed mismatches per target sequence
-5. UMI threshold
+Options:
+* `-h` display help and exit
+
+Commands:
+* `prep` prepare samples (FASTQ files) for counting
+* `count` count reads and molecules per sample and target
+
+#### `tacseq prep [options]`
+Prepare samples (FASTQ files) for counting.
+
+Options:
+* `-h` display help and exit
+* `-i` input files: gzip compressed/uncompressed FASTQ files
+* `-t` target file: target file format is based on [FASTX Barcode Splitter](http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage) barcode file format
+* `-o` output
+* `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
+
+#### `tacseq count [options]`
+Count reads and molecules per sample and target.
+
+Options:
+* `-h` display help and exit
+* `-i` input directory: `tacseq prep` output directory
+* `-u` UMI threshold (default: 2)
 
 #### Target file format
 Target file is a text file which contains a list of targets. Each line has to contain a target ID (must be alphanumeric) which is followed by the target sequence (only A, C, G and T characters are allowed). Target ID and sequence are separated by a TAB character.
@@ -61,11 +66,20 @@ Target file example:
     TARGET2 CCAAAGCTTCAACGGACATAGTGTACATACCTACCGTGTTTCCCAGCACCTTCC
     TARGET3 CTGCTGTTGCCGCCTGGGGTTTACGCGTGTTGGAGATTGAGTAGCCTCCTCGGC
 
-### Run example analysis
-`./tacseq prep -i "example/*.fastq" -t example/targets.txt -o output/ -m 5  # prepare samples`
-`./tacseq count -i output/ -u 2 > counts.tsv  # count molecules and write results to counts.tsv`
-
 ### Output
-Output folder includes intermediate files and results:
-* Sample folders with intermediate files
-* `counts_UMI#.tsv` file with read and molecule counts per sample and locus. # symbolizes UMI threshold.
+`tacseq prep` outputs a directory for each sample with:
+* 3 sub-directories with files for each target:
+	* loci
+	* umis
+	* merged
+* 2 intermediate files:
+	* trimmed.fasta
+	* umi_joined.fasta
+
+`tacseq count` outputs read and molecule count per sample and target.
+
+### Run example
+* Step 1 - prepare samples:
+`./tacseq prep -i "example/*.fastq" -t example/targets.txt -o output/ -m 5`
+* Step 2 - count molecules and write results to file `counts.tsv`:
+`./tacseq count -i output/ -u 2 > counts.tsv`
