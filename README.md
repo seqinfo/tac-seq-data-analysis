@@ -6,6 +6,8 @@ This repository contains the sequencing data analysis software for TAC-seq.
 ### Option 1: Virtual machine
 We have created TAC-seq-data-analysis virtual machine that can be executed on all common operating systems through virtualization programs such as VirtualBox, providing the user with preinstalled TAC-seq data analysis software.
 
+Please consult [setup.pdf](https://github.com/cchtEE/TAC-seq-data-analysis/blob/master/setup.pdf) or follow the steps:
+
 1. To start using the virtual machine, you need to download and install a hypervisor, a computer software that creates and runs virtual machines. You can use [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 2. Download [TAC-seq-data-analysis virtual machine](https://www.dropbox.com/s/867beq9m2q9v6eq/TAC-seq-data-analysis.ova?dl=0).
 3. Open VirtualBox and go to "File -> Import Appliance -> choose TAC-seq-data-analysis.ova (leave the default options).
