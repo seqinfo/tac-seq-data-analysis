@@ -8,8 +8,7 @@ umi=$2  # UMI threshold
 echo -e "sample\tlocus\tread_count\tmolecule_count"
 
 # count by sample and locus
-for fasta in $input/*/merged/*.merged.fasta
-do
+for fasta in $input/*/merged/*.merged.fasta; do
 	sample=$(basename $(dirname $(dirname $fasta)))
 	locus=$(basename $fasta .merged.fasta)
 	
@@ -17,8 +16,7 @@ do
 	counts=$(grep '^>' $fasta | cut -d '-' -f 2)
 	read_count=0
 	molecule_count=0
-	for count in $counts
-	do
+	for count in $counts; do
 		read_count=$(($read_count + $count))  # total reads
 		if (($count >= $umi))
 		then
