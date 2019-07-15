@@ -1,67 +1,49 @@
 # TAC-seq data analysis
 This repository contains the sequencing data analysis software for TAC-seq.
 
-### There are 2 options to use TAC-seq data analysis software:
-
-### Option 1: Virtual machine
-We have created TAC-seq-data-analysis virtual machine that can be executed on all common operating systems through virtualization programs such as VirtualBox, providing the user with preinstalled TAC-seq data analysis software.
-
-Please consult [setup.pdf](https://github.com/cchtEE/TAC-seq-data-analysis/blob/master/setup.pdf) or follow the steps:
-
-1. To start using the virtual machine, you need to download and install a hypervisor, a computer software that creates and runs virtual machines. You can use [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
-2. Download [TAC-seq-data-analysis virtual machine](https://www.dropbox.com/s/867beq9m2q9v6eq/TAC-seq-data-analysis.ova?dl=0).
-3. Open VirtualBox and go to "File -> Import Appliance -> choose TAC-seq-data-analysis.ova (leave the default options).
-4. To start the virtual machine, right click on the "TAC-seq-data-analysis" -> Start.
-5. Once started, on the desktop of the virtual machine, follow `protocol.txt` to run analysis.
-6. Password for virtual machine is "TAC-seq".
-7. Transfer your data to virtual machine through Google Drive or using flash drive. Also it is possible to use a shared folder, please see below for further instructions.
-
-Please note, by default the maximum space, the TAC-seq-data-analysis virtual machine can use, is limited to 10 GB. For larger sequencing data analysis than provided example files, it is recommended to use [shared folder](https://www.howtogeek.com/189974/how-to-share-your-computers-files-with-a-virtual-machine/) that allows to share your files from your host operating system with virtual machine. 
-
-### Option 2: Standalone version
 #### Requirements
-* Linux-based OS (preferably [Ubuntu](https://www.ubuntu.com/desktop) 16.04). If you are running 64-bit version of Windows 10 you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10). 
+* Linux-based OS
 * [FASTX-Toolkit](https://github.com/agordon/fastx_toolkit)
+* [Git](https://git-scm.com/)
 
 #### Setup
-Use the following commands to setup TAC-seq data analysis software on Ubuntu 16.04 terminal:
-1. Prepare Ubuntu for software installation: `sudo apt update`
-2. Install [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/index.html): `sudo apt install fastx-toolkit`
-3. Install [git](https://git-scm.com/): `sudo apt install git`
-4. Download the analysis software: `git clone https://github.com/cchtEE/TAC-seq-data-analysis.git`
-5. Navigate to analysis location: `cd TAC-seq-data-analysis`
-6. Make `tacseq` executable: `chmod +x tacseq`
+Use the following commands to setup TAC-seq data analysis software on terminal:
+1. Install [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/index.html)
+2. Install [Git](https://git-scm.com/)
+3. Download the analysis software using Git: `git clone https://github.com/hindrek/TAC-seq-data-analysis`
+4. Navigate to analysis location: `cd TAC-seq-data-analysis`
+5. Make `tacseq` executable: `chmod +x tacseq`
 
 ### Usage
 #### `tacseq [options] <command>`
-TAC-seq data analysis
+Analyze TAC-seq data.
 
-Options:
+options:
 * `-h` display help and exit
 
-Commands:
+commands:
 * `prep` prepare samples (FASTQ files) for counting
 * `count` count reads and molecules per sample and target
 
 #### `tacseq prep [options]`
 Prepare samples (FASTQ files) for counting.
 
-Mandatory:
-* `-i` input files: gzip compressed/uncompressed FASTQ files
+mandatory:
+* `-i` input file: gzip compressed/uncompressed FASTQ file or '-' as standard input (stdin)
 * `-t` target file: target file format is based on [FASTX Barcode Splitter](http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage) barcode file format
-* `-o` output
+* `-o` output directory
 
-Optional:
+optional:
 * `-h` display help and exit
 * `-m` mismatches: number of allowed mismatches per target sequence (default: 5)
 
 #### `tacseq count [options]`
 Count reads and molecules per sample and target.
 
-Mandatory:
+mandatory:
 * `-i` input directory: `tacseq prep` output directory
 
-Optional:
+optional:
 * `-h` display help and exit
 * `-u` UMI threshold (default: 2)
 
@@ -84,10 +66,10 @@ Target file example:
 	* trimmed.fasta
 	* umi_joined.fasta
 
-`tacseq count` outputs read and molecule count per sample and target.
+`tacseq count` outputs read and molecule counts per target for each sample.
 
 ### Run example
 * Step 1 - prepare samples:
-`./tacseq prep -i "example/*.fastq" -t example/targets.txt -o output/ -m 5`
-* Step 2 - count molecules and write results to file `counts.tsv`:
-`./tacseq count -i output/ -u 2 > counts.tsv`
+`./tacseq prep -i example/samples/sample1/sample1.fastq.gz -t example/targets.txt -o example/output/sample1/ -m 5`
+* Step 2 - count molecules and write results to `counts.tsv` file:
+`./tacseq count -i output/sample1/ -u 2 > counts.tsv`

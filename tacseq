@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # set default values to arguments
-mismatches=5  # default mismatches
-umi=2  # default UMI threshold
+MISMATCHES=5  # default mismatches
+UMI=2  # default UMI threshold
 
 # tacseq command usage function
 tacseq_usage() {
@@ -24,7 +24,7 @@ prep_usage() {
   echo "Prepare samples (FASTQ files) for counting."
   echo ""
   echo "mandatory:"
-  echo "	-i	input files: gzip compressed/uncompressed FASTQ files"
+  echo "	-i	input file: gzip compressed/uncompressed FASTQ file or '-' as standard input (stdin)"
   echo "	-t	target file: target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
   echo "	-o	output directory"
   echo ""
@@ -49,68 +49,68 @@ count_usage() {
 }
 
 # parse options to sub-commands
-subcommand=$1
+subcommand="$1"
 OPTIND=2
-case $subcommand in
+case "$subcommand" in
   # parse options to 'prep' sub-command
   prep )
     while getopts ":i:t:o:m:" opt; do
       case ${opt} in
         i )
-          input=$OPTARG
+          INPUT=$OPTARG
           ;;
         t )
-          target=$OPTARG
+          TARGET=$OPTARG
           ;;
         o )
-          output=$OPTARG
+          OUTPUT=$OPTARG
           ;;
         m )  # optional
-          mismatches=$OPTARG
+          MISMATCHES=$OPTARG
           ;;
-        * )
-          prep_usage 1>&2
-          exit 1
-          ;;
+		* )
+		  prep_usage 1>&2
+		  exit 1
+		  ;;
       esac
     done
-    shift $((OPTIND-1))
-    
-    # check for mandatory options
-    if [ ! "$input" ] || [ ! "$target" ] || [ ! "$output" ]; then
-      prep_usage 1>&2
-      exit 1
-    fi
-    
-    # run 'prep' sub-command
-    source prep.sh "$input" "$target" "$output" $mismatches
+	shift $((OPTIND-1))
+	
+	# check for mandatory options
+	if [ ! "$INPUT" ] || [ ! "$TARGET" ] || [ ! "$OUTPUT" ]; then
+	  prep_usage 1>&2
+	  exit 1
+	fi
+	
+	# run 'prep' sub-command
+	source prep.sh "$INPUT" "$TARGET" "$OUTPUT" $MISMATCHES
     ;;
   # parse options to 'count' sub-command
   count )
     while getopts ":i:u:" opt; do
       case ${opt} in
         i )
-          input=$OPTARG
+          INPUT=$OPTARG
           ;;
         u )  # optional
-          umi=$OPTARG
+          UMI=$OPTARG
           ;;
-        * )
-          count_usage 1>&2
-          exit 1
-          ;;
+		* )
+		  count_usage 1>&2
+		  exit 1
+		  ;;
       esac
     done
-    shift $((OPTIND-1))
-    
-    # check for mandatory options
-    if [ ! "$input" ]; then
-      count_usage 1>&2
-      exit 1
-    fi
-    
-    # run 'count' sub-command
-    source count.sh "$input" $umi
+	shift $((OPTIND-1))
+	
+	# check for mandatory options
+	if [ ! "$INPUT" ]; then
+	  count_usage 1>&2
+	  exit 1
+	fi
+	
+	# run 'count' sub-command
+	source count.sh "$INPUT" $UMI
     ;;
   * )
     tacseq_usage 1>&2
