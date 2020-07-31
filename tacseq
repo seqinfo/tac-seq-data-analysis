@@ -10,11 +10,11 @@ tacseq_usage() {
   echo "TAC-seq data analysis"
   echo ""
   echo "options:"
-  echo "	-h	display this help and exit"
+  echo "  -h  display this help and exit"
   echo ""
   echo "commands:"
-  echo "	prep	prepare samples (FASTQ files) for counting"
-  echo "	count	count reads and molecules per sample and target"
+  echo "  prep  prepare samples (FASTQ files) for counting"
+  echo "  count  count reads and molecules per sample and target"
   echo ""
 }
 
@@ -24,13 +24,13 @@ prep_usage() {
   echo "Prepare samples (FASTQ files) for counting."
   echo ""
   echo "mandatory:"
-  echo "	-i	input file: gzip compressed/uncompressed FASTQ file or '-' as standard input (stdin)"
-  echo "	-t	target file: target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
-  echo "	-o	output directory"
+  echo "  -i  input file: gzip compressed/uncompressed FASTQ file or '-' as standard input (stdin)"
+  echo "  -t  target file: target file format is based on FASTX Barcode Splitter barcode file format (http://hannonlab.cshl.edu/fastx_toolkit/commandline.html#fastx_barcode_splitter_usage)"
+  echo "  -o  output directory"
   echo ""
   echo "optional:"
-  echo "	-h	display this help and exit"
-  echo "	-m	mismatches: number of allowed mismatches per target sequence (default: 5)"
+  echo "  -h  display this help and exit"
+  echo "  -m  mismatches: number of allowed mismatches per target sequence (default: 5)"
   echo ""
 }
 
@@ -40,11 +40,11 @@ count_usage() {
   echo "Count reads and molecules per sample and target."
   echo ""
   echo "mandatory:"
-  echo "	-i	input directory: 'tacseq prep' output directory"
+  echo "  -i  input directory: 'tacseq prep' output directory"
   echo ""
   echo "optional:"
-  echo "	-h	display this help and exit"
-  echo "	-u	UMI threshold (default: 2)"
+  echo "  -h  display this help and exit"
+  echo "  -u  UMI threshold (default: 2)"
   echo ""
 }
 
@@ -68,22 +68,22 @@ case "$subcommand" in
         m )  # optional
           MISMATCHES=$OPTARG
           ;;
-		* )
-		  prep_usage 1>&2
-		  exit 1
-		  ;;
+    * )
+      prep_usage 1>&2
+      exit 1
+      ;;
       esac
     done
-	shift $((OPTIND-1))
-	
-	# check for mandatory options
-	if [ ! "$INPUT" ] || [ ! "$TARGET" ] || [ ! "$OUTPUT" ]; then
-	  prep_usage 1>&2
-	  exit 1
-	fi
-	
-	# run 'prep' sub-command
-	source prep.sh "$INPUT" "$TARGET" "$OUTPUT" $MISMATCHES
+  shift $((OPTIND-1))
+
+  # check for mandatory options
+  if [ ! "$INPUT" ] || [ ! "$TARGET" ] || [ ! "$OUTPUT" ]; then
+    prep_usage 1>&2
+    exit 1
+  fi
+
+  # run 'prep' sub-command
+  source prep.sh "$INPUT" "$TARGET" "$OUTPUT" $MISMATCHES
     ;;
   # parse options to 'count' sub-command
   count )
@@ -95,22 +95,22 @@ case "$subcommand" in
         u )  # optional
           UMI=$OPTARG
           ;;
-		* )
-		  count_usage 1>&2
-		  exit 1
-		  ;;
+    * )
+      count_usage 1>&2
+      exit 1
+      ;;
       esac
     done
-	shift $((OPTIND-1))
-	
-	# check for mandatory options
-	if [ ! "$INPUT" ]; then
-	  count_usage 1>&2
-	  exit 1
-	fi
-	
-	# run 'count' sub-command
-	source count.sh "$INPUT" $UMI
+  shift $((OPTIND-1))
+
+  # check for mandatory options
+  if [ ! "$INPUT" ]; then
+    count_usage 1>&2
+    exit 1
+  fi
+
+  # run 'count' sub-command
+  source count.sh "$INPUT" $UMI
     ;;
   * )
     tacseq_usage 1>&2
