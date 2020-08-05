@@ -21,13 +21,23 @@ cat "$OUTPUT"/umi_joined.fasta | fastx_barcode_splitter.pl --bcfile "$TARGET" --
 # trim target sequence (54 bp), remove UMI with N
 mkdir "$OUTPUT"/umis
 for i in "$OUTPUT"/loci/*.fasta; do
-    locus=$(basename "$i" ".fasta")
-    fastx_trimmer -t 54 -v -i "$i" | fastx_clipper -a X -l 6 -v > "$OUTPUT"/umis/"$locus".umi.fasta
+    locus="$(basename "$i" ".fasta")"
+    if [ -s "$i" ]; then
+        fastx_trimmer -t 54 -v -i "$i" | fastx_clipper -a X -l 6 -v > "$OUTPUT"/umis/"$locus".umi.fasta
+    else
+        echo ""$i" file is empty" >&2
+        touch "$OUTPUT"/umis/"$locus".umi.fasta
+    fi
 done
 
 # merge identical UMIs
 mkdir "$OUTPUT"/merged
 for i in "$OUTPUT"/umis/*.umi.fasta; do
-    locus=$(basename "$i" ".umi.fasta")
-    fastx_collapser -v -i "$i" > "$OUTPUT"/merged/"$locus".merged.fasta
+    locus="$(basename "$i" ".umi.fasta")"
+    if [[ -s "$i" ]]; then
+        fastx_collapser -v -i "$i" > "$OUTPUT"/merged/"$locus".merged.fasta
+    else
+        echo ""$i" file is empty" >&2
+        touch "$OUTPUT"/merged/"$locus".merged.fasta
+    fi
 done

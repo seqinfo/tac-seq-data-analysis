@@ -16,10 +16,9 @@ for fasta in "$INPUT"/merged/*.merged.fasta; do
     read_count=0
     molecule_count=0
     for count in $counts; do
-        read_count=$(($read_count + $count))  # total reads
-        if (($count >= $UMI))
-        then
-            ((molecule_count++))  # UMI corrected
+        read_count=$((read_count + count))  # total reads
+        if [ $count -ge $UMI ]; then
+            molecule_count=$((molecule_count + 1))  # UMI corrected
         fi
     done
 
